@@ -1,13 +1,13 @@
 use std::{path::Path, sync::Arc};
 
 use criterion::{ black_box, criterion_group, criterion_main, Criterion};
-use renderenko::{builder::{self, RenderenkoBuilded}, misc::mesh::load_from_obj, types::MeshV4Plus};
+use renderenko::{misc::mesh::load_from_obj, types::MeshV4Plus};
 
 
 fn render_and_save(
     mesh: Arc<MeshV4Plus>
 ) {
-    // drop(mesh)
+    drop(mesh)
 }
 
 fn criterion_benchmark(c: &mut Criterion) {

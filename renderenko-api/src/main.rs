@@ -6,7 +6,7 @@ use actix_web::{error::Error, App, HttpRequest, HttpServer};
 use renderenko_api::post::render::render_config;
 
 fn error_handler(err:MultipartError, req: &HttpRequest) -> Error {
-    println!("Error: {:?}\n Request: {:?}",err,req);
+    // println!("Error: {:?}\n Request: {:?}",err,req);
     Error::from(err)
     // Error::from(RenderenkoError {name: "something"})
 }

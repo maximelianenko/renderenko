@@ -1,9 +1,9 @@
-use std::{arch::asm, borrow::Borrow, fs::File, io::{BufReader, BufWriter}, path::Path, sync::Arc};
+use std::{borrow::Borrow, fs::File, io::{BufReader, BufWriter}, path::Path, sync::Arc};
 
 use actix_multipart::form::{tempfile::TempFile, text::Text, MultipartForm};
 use actix_web::{http::StatusCode, web, HttpResponse, Responder};
 use image::{codecs::png::PngEncoder, ExtendedColorType, ImageEncoder, ImageFormat};
-use renderenko::{builder::{self, Renderenko}, misc::mesh::load_from_obj, types::MeshV4Plus};
+use renderenko::{builder, misc::mesh::load_from_obj, types::MeshV4Plus};
 pub struct AppState {
     // ferris: Renderenko,
     alex: Arc<MeshV4Plus>,
@@ -102,9 +102,9 @@ pub fn render_config(cfg: &mut web::ServiceConfig) {
     cfg
         .app_data(web::Data::new(AppState {
             // ferris: builder::Renderenko::new().mesh(Path::new("data/model/ferris.obj")).unwrap().to_owned(),
-            alex: Arc::new(load_from_obj(Path::new("data/model/alex.obj")).unwrap()),
-            steve: Arc::new(load_from_obj(Path::new("data/model/steve.obj")).unwrap()),
-            steve_old: Arc::new(load_from_obj(Path::new("data/model/steve_old.obj")).unwrap())
+            alex: Arc::new(load_from_obj(Path::new("data/model/default/alex.obj")).unwrap()),
+            steve: Arc::new(load_from_obj(Path::new("data/model/default/steve.obj")).unwrap()),
+            steve_old: Arc::new(load_from_obj(Path::new("data/model/default/steve_old.obj")).unwrap())
         }))
         .service(
             web::resource("/render")
