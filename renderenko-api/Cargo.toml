@@ -1,0 +1,22 @@
+[package]
+name = "renderenko-api"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+actix-web = "4"
+axum = "0.7.5"
+image = "0.25.1"
+nalgebra = "0.32.5"
+serde = {version = "1.0.203", features = ["derive"] }
+renderenko = {path = "../renderenko"}
+# tokio = { version = "1", features = ["full","rt-multi-thread"] }
+tracing-subscriber = "0.3.18"
+actix-multipart = "0.6.2"
+derive_more = "0.99.17"
+# [dependencies.renderenko]
+
+# git = "https://github.com/maximelianenko/renderenko"
+# branch = "main"
